@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS actors;
+DROP TABLE IF EXISTS movies;
+
+CREATE TABLE actors(
+  id SERIAL8 PRIMARY KEY,
+  name VARCHAR(255)
+);
+
+CREATE TABLE movies(
+  id SERIAL8 PRIMARY KEY,
+  title VARCHAR(255),
+  genre VARCHAR(255)
+);
+
+CREATE TABLE roles(
+  id SERIAL8 PRIMARY KEY,
+  actor_id INT4 REFERENCES actors(id),
+  movie_id INT4 REFERENCES movies(id),
+  fee INT4
+);
